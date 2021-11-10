@@ -4,6 +4,7 @@ import "./App.css";
 import Home from "./pages/Home";
 import Offer from "./pages/Offer";
 import { useState, useEffect } from "react";
+import logo from "./asset/img/logo.png";
 
 function App() {
   const [data, setData] = useState([]);
@@ -31,17 +32,12 @@ function App() {
     <span>En cours de chargement</span>
   ) : (
     <Router>
-      <ul>
-        <li>
-          <Link to="/offer">Go to offer</Link>
-        </li>
-        <li>
-          <Link to="/">Go to home</Link>
-        </li>
-      </ul>
+      <div className="header">
+        <img className="logo" src={logo} alt="logo" />
+      </div>
       <Routes>
-        <Route path="/" element={<Home data={data.offer} />} />
-        <Route path="/offer" element={<Offer />} />
+        <Route path="/" element={<Home offers={data.offers} />} />
+        <Route path="/offer/:id" element={<Offer />} />
       </Routes>
     </Router>
   );

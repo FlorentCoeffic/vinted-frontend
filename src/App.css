@@ -1,1 +1,32 @@
 /* Other rules */
+
+.header {
+  height: 120px;
+}
+
+.logo {
+  width: 150px;
+}
+
+.offers {
+  width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  /* flex-direction: column; */
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.offer {
+  width: 235px;
+  height: 450px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 40px;
+  justify-content: space-between;
+}
+
+.img {
+  height: 360px;
+  object-fit: cover;
+}
