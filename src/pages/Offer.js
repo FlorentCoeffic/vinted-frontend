@@ -29,9 +29,9 @@ const Offer = () => {
   return isLoading ? (
     <span>En cours de chargement</span>
   ) : (
-    <div>
+    <div className="offerCard">
       <img
-        className="offer-picture"
+        className="offerPicture"
         src={data.product_pictures[0].secure_url}
         alt={data.product_name}
       />
