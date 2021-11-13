@@ -8,7 +8,6 @@ const Home = ({ searchResult }) => {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
-  console.log("home", searchResult);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -17,6 +16,7 @@ const Home = ({ searchResult }) => {
         );
 
         // console.log(response.data);
+
         setData(response.data);
         setIsLoading(false);
       } catch (error) {
