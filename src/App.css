@@ -43,6 +43,14 @@
 
 /* ************************************** */
 
+/* ****** HERO******* */
+
+.hero {
+  height: 455px;
+  width: 100%;
+  object-fit: cover;
+}
+
 /* ****** home ****** */
 
 .offers {
@@ -72,9 +80,18 @@
 
 .offerCard {
   background-color: #ebedee;
+  width: 1280px;
+  margin: 0 auto;
   display: flex;
+  justify-content: space-around;
+  padding: 30px;
 }
 
-.offerPicture {
-  display: block;
+.offerInformation {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #fff;
+  width: 320px;
+  padding: 40px;
 }

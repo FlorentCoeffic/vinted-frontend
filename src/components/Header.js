@@ -1,15 +1,39 @@
 import logo from "../asset/img/logo.png";
 import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
-const Header = ({ setUser, token }) => {
+const Header = ({ setUser, token, setSearchResult }) => {
   const navigate = useNavigate();
+
+  const handleChange = (event) => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          `https://lereacteur-vinted-api.herokuapp.com/offers?title=${event.target.value}`
+        );
+
+        setSearchResult(response.data);
+        // setData(response.data);
+        // setIsLoading(false);
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+
+    fetchData();
+  };
+
   return (
     <div className="header">
       <Link to="/">
         <img className="logo" src={logo} alt="logo" />
       </Link>
 
-      <input type="text" placeholder="Recherche des articles" />
+      <input
+        onChange={handleChange}
+        type="text"
+        placeholder="Recherche des articles"
+      />
 
       <div className="connexion">
         {token ? (

@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import Hero from "../components/Hero";
 
 const Offer = () => {
   const [data, setData] = useState([]);
@@ -32,29 +33,34 @@ const Offer = () => {
     <div className="offerCard">
       <img
         className="offerPicture"
-        src={data.product_pictures[0].secure_url}
+        src={data.product_image.secure_url}
         alt={data.product_name}
       />
-      <span> {data.product_price} €</span>
 
-      <ul>
-        {data.product_details.map((detail, index) => {
-          const keys = Object.keys(detail);
-          return (
-            <li>
-              <span>{keys[0]}</span>
-              <span>{detail[keys[0]]}</span>
-            </li>
-          );
-        })}
-      </ul>
+      <div className="offerInformation">
+        <span> {data.product_price} €</span>
 
-      <div>
-        <span>{data.product_name}</span>
+        <ul>
+          {data.product_details.map((detail, index) => {
+            const keys = Object.keys(detail);
+            console.log("=== >", detail[keys]);
+            return (
+              <li>
+                <span>{keys[0]}</span>
 
-        <span>{data.product_description}</span>
+                <span>{detail[keys[0]]}</span>
+              </li>
+            );
+          })}
+        </ul>
 
-        <span>{data.owner.account.username}</span>
+        <div>
+          <span>{data.product_name}</span>
+
+          <span>{data.product_description}</span>
+
+          <span>{data.owner.account.username}</span>
+        </div>
       </div>
     </div>
   );

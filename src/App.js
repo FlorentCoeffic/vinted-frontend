@@ -8,10 +8,12 @@ import Offer from "./pages/Offer";
 import Header from "./components/Header";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
-import Offers from "./pages/Offers";
 
 function App() {
   const [token, setToken] = useState(null);
+  const [searchResult, setSearchResult] = useState();
+
+  console.log(searchResult);
 
   const setUser = (token) => {
     if (token) {
@@ -23,13 +25,16 @@ function App() {
   };
   return (
     <Router>
-      <Header setUser={setUser} token={token} />
+      <Header
+        setUser={setUser}
+        token={token}
+        setSearchResult={setSearchResult}
+      />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home searchResult={searchResult} />} />
         <Route path="/signup" element={<SignUp setUser={setUser} />} />
         <Route path="/login" element={<Login setUser={setUser} />} />
         <Route path="/offer/:id" element={<Offer />} />
-        <Route path="/offers" element={<Offers />} />
       </Routes>
     </Router>
   );
