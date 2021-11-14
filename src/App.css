@@ -3,20 +3,44 @@
 /* HEADER */
 
 .header {
-  height: 120px;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
+  width: 1280px;
+  margin: auto;
+  padding: 10px 0;
+  height: 120px;
 }
 
 .header input {
-  height: 30px;
-  width: 200px;
+  width: 590px;
+  padding-left: 40px;
+  background-color: #f5f6f7;
   border-radius: 5px;
+  height: 37px;
+  border: none;
+  outline: none;
+  font-family: "Maison Neue";
+  font-size: 16px;
+}
+
+.header input::placeholder {
+  color: #cbcccd;
+  font-size: 16px;
 }
 
 .header img {
   height: 50px;
+}
+
+.header-button {
+  height: 30px;
+  width: 115px;
+  border: 1px solid #2cb1ba;
+  border-radius: 5px;
+  font-family: "Maison Neue";
+  font-size: 12px;
+  outline: none;
 }
 
 .login,
@@ -31,6 +55,10 @@
   text-decoration: none;
 }
 
+.signup {
+  margin-right: 20px;
+}
+
 .sellButton {
   height: 30px;
   width: 115px;
@@ -41,6 +69,17 @@
   background-color: #2cb1ba;
 }
 
+.deconnexion {
+  height: 30px;
+  border-radius: 5px;
+  font-family: "Maison Neue";
+  font-size: 12px;
+  outline: none;
+  border: none;
+  background-color: #c2175b;
+  color: white;
+  padding: 5px 20px;
+}
 /* ************************************** */
 
 /* ****** HERO******* */
@@ -48,18 +87,27 @@
 .hero {
   height: 455px;
   width: 100%;
-  object-fit: cover;
+  position: relative;
+  background-position: center;
+  background-size: cover;
+  background-image: url("./asset/img/hero.jpg");
 }
 
+.imgDecoration {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  height: 80px;
+}
 /* ****** home ****** */
 
 .offers {
   width: 1280px;
-  margin: 0 auto;
+  margin: auto;
   display: flex;
-  /* flex-direction: column; */
   flex-wrap: wrap;
   justify-content: space-between;
+  margin-top: 30px;
 }
 
 .offer {
@@ -67,13 +115,31 @@
   height: 450px;
   display: flex;
   flex-direction: column;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   justify-content: space-between;
+  font-size: 12px;
+  color: inherit;
+  text-decoration: inherit;
 }
 
 .img {
   height: 360px;
   object-fit: cover;
+}
+
+.offerinfo {
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+}
+
+.offerinfo span:first-child {
+  font-size: 14px;
+}
+
+.offerinfo span:not(:first-child) {
+  font-size: 12px;
+  color: #999999;
 }
 
 /* ******* OFFER ****** */
@@ -87,11 +153,157 @@
   padding: 30px;
 }
 
+.offerPicture {
+  height: 600px;
+  object-fit: cover;
+}
+
 .offerInformation {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-color: #fff;
-  width: 320px;
+  background-color: white;
+  width: 400px;
   padding: 40px;
+  box-sizing: border-box;
+}
+
+.price {
+  font-size: 24px;
+  line-height: 32px;
+  color: #111111;
+}
+
+li {
+  list-style-type: none;
+  /* padding: 2px 0; */
+}
+
+li span {
+  flex: 1;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+.productTitle {
+  font-weight: bold;
+}
+
+.productDescription {
+  color: #8f8f8f;
+}
+
+.username {
+  display: flex;
+  align-items: center;
+}
+
+.avatar {
+  height: 50px;
+  width: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+/* ******* SIGNUP ******** */
+
+.containerSignup h2 {
+  text-align: center;
+}
+
+.containerSignup {
+  display: flex;
+  flex-direction: column;
+  width: 275px;
+  margin: auto;
+}
+
+.formSignup input {
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #f8ced3;
+  height: 35px;
+  width: 275px;
+  margin-bottom: 20px;
+}
+
+.header input::placeholder {
+  color: #d6d7d8;
+  font-size: 16px;
+}
+
+.form-checkbox {
+  display: flex;
+}
+
+.signup-alert {
+  color: #999;
+  font-size: 12px;
+}
+
+.signup-button {
+  height: 45px;
+  width: 100%;
+  background-color: #2cb1ba;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+.login-link {
+  text-align: center;
+  text-decoration: inherit;
+  color: #2cb1ba;
+  font-size: 12px;
+  margin-top: 20px;
+}
+
+.errorMessage {
+  color: red;
+  font-size: 9px;
+  text-align: center;
+}
+
+/* ******* LOGIN ******* */
+
+.container-login {
+  display: flex;
+  flex-direction: column;
+  width: 275px;
+  margin: auto;
+}
+
+.container-login h2 {
+  text-align: center;
+}
+
+.formLogin input {
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #f8ced3;
+  height: 35px;
+  width: 275px;
+  margin-bottom: 20px;
+}
+
+.login-button {
+  height: 45px;
+  width: 100%;
+  background-color: #2cb1ba;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+.signup-link {
+  text-align: center;
+  text-decoration: inherit;
+  color: #2cb1ba;
+  font-size: 12px;
+  margin-top: 20px;
 }

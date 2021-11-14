@@ -40,51 +40,52 @@ const SignUp = ({ setUser }) => {
 
   return (
     <div>
-      <h2>S'inscrire</h2>
-      <form onSubmit={handleSubmit}>
-        <input
-          onChange={(event) => {
-            setUsername(event.target.value);
-          }}
-          value={username}
-          type="text"
-          placeholder="Nom d'utilisateur"
-        />
-        <input
-          onChange={(event) => {
-            setEmail(event.target.value);
-          }}
-          value={email}
-          type="email"
-          placeholder="Email"
-        />
+      <div className="containerSignup">
+        <h2>S'inscrire</h2>
+        <form className="formSignup" onSubmit={handleSubmit}>
+          <input
+            onChange={(event) => {
+              setUsername(event.target.value);
+            }}
+            value={username}
+            type="text"
+            placeholder="Nom d'utilisateur"
+          />
+          <input
+            onChange={(event) => {
+              setEmail(event.target.value);
+            }}
+            value={email}
+            type="email"
+            placeholder="Email"
+          />
+          <span className="errorMessage"> {errorMessage}</span>
+          <input
+            onChange={(event) => {
+              setPassword(event.target.value);
+            }}
+            value={password}
+            type="password"
+            placeholder="Mot de passe"
+          />
 
-        <input
-          onChange={(event) => {
-            setPassword(event.target.value);
-          }}
-          value={password}
-          type="password"
-          placeholder="Mot de passe"
-        />
+          <div className="form-checkbox">
+            <input className="checkbox" type="checkbox" />
+            S'inscrire à notre newsletter
+          </div>
 
-        <div>
-          <input type="checkbox" />
-          S'inscrire à notre newsletter
-        </div>
+          <p className="signup-alert">
+            En m'inscrivant je confirme avoir lu et accepté les Termes &
+            Conditions et Politique de Confidentialité de Vinted. Je confirme
+            avoir au moins 18 ans.
+          </p>
 
-        <p>
-          En m'inscrivant je confirme avoir lu et accepté les Termes &
-          Conditions et Politique de Confidentialité de Vinted. Je confirme
-          avoir au moins 18 ans.
-        </p>
-        <span className="errorMessage"> {errorMessage}</span>
-        <button>S'inscrire</button>
-
-        <Link to="/login ">
-          <span> Tu as déjà un compte ? Connecte-toi!</span>
+          <button className="signup-button">S'inscrire</button>
+        </form>
+        <Link className="login-link" to="/login ">
+          <span>Tu as déjà un compte ? Connecte-toi!</span>
         </Link>
-      </form>
+      </div>
     </div>
   );
 };

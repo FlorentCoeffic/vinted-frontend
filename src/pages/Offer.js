@@ -38,7 +38,7 @@ const Offer = () => {
       />
 
       <div className="offerInformation">
-        <span> {data.product_price} €</span>
+        <span className="price"> {data.product_price} €</span>
 
         <ul>
           {data.product_details.map((detail, index) => {
@@ -55,10 +55,20 @@ const Offer = () => {
         </ul>
 
         <div>
-          <span>{data.product_name}</span>
+          <p className="productTitle">{data.product_name}</p>
 
-          <span>{data.product_description}</span>
-
+          <p className="productDescription">{data.product_description}</p>
+        </div>
+        <div className="username">
+          {data.owner.account.avatar ? (
+            <img
+              className="avatar"
+              alt={data.product_name}
+              src={data.owner.account.avatar.secure_url}
+            />
+          ) : (
+            ""
+          )}
           <span>{data.owner.account.username}</span>
         </div>
       </div>

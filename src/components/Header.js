@@ -11,7 +11,6 @@ const Header = ({ setUser, token, setSearchResult }) => {
         const response = await axios.get(
           `https://lereacteur-vinted-api.herokuapp.com/offers?title=${event.target.value}`
         );
-
         setSearchResult(response.data);
         // setData(response.data);
         // setIsLoading(false);

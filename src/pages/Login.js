@@ -36,29 +36,40 @@ const Login = ({ setUser }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <div className="container-login">
       <h2> Se connecter</h2>
-      <input
-        onChange={(event) => {
-          setEmail(event.target.value);
-        }}
-        type="email"
-        placeholder="Email"
-      />
-      <input
-        onChange={(event) => {
-          setPassword(event.target.value);
-        }}
-        type="password"
-        placeholder="Mot de passe"
-      />
 
-      <button> Se connecter </button>
-      <span className="errorMessage">{errorMessage}</span>
-      <Link to="/signup ">
+      <form onSubmit={handleSubmit}>
+        <div className="formLogin">
+          <input
+            onChange={(event) => {
+              setEmail(event.target.value);
+            }}
+            type="email"
+            placeholder="Email"
+          />
+          <input
+            onChange={(event) => {
+              setPassword(event.target.value);
+            }}
+            type="password"
+            placeholder="Mot de passe"
+          />
+
+          <span className="errorMessage">{errorMessage}</span>
+        </div>
+
+        <input
+          className="login-button"
+          type="submit"
+          value="Se connecter"
+        ></input>
+      </form>
+
+      <Link className=" signup-link" to="/signup ">
         <span> Pas encore de compte ? Inscrit-toi!</span>
       </Link>
-    </form>
+    </div>
   );
 };
 
