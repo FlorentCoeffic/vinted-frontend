@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import Hero from "../components/Hero";
+import Hero from "../components/Hero.js";
 import { set } from "js-cookie";
 import tear from "../asset/img/tear.svg";
 

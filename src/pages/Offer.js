@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import Hero from "../components/Hero";
+import Hero from "../components/Hero.js";
 
 const Offer = () => {
   const [data, setData] = useState([]);

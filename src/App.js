@@ -3,11 +3,11 @@ import { useState } from "react";
 import Cookies from "js-cookie";
 import "./App.css";
 
-import Home from "./pages/Home";
-import Offer from "./pages/Offer";
-import Header from "./components/Header";
-import SignUp from "./pages/SignUp";
-import Login from "./pages/Login";
+import Home from "./pages/Home.js";
+import Offer from "./pages/Offer.js";
+import Header from "./components/Header.js";
+import SignUp from "./pages/SignUp.js";
+import Login from "./pages/Login.js";
 
 function App() {
   const [token, setToken] = useState(null);
