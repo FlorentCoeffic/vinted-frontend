@@ -57,7 +57,14 @@ const Header = ({ setUser, token, setSearchResult }) => {
         )}
       </div>
 
-      <button className="sellButton"> Vends tes articles</button>
+      <button
+        onClick={() => {
+          navigate("/publish");
+        }}
+        className="header-button sellButton"
+      >
+        Vends tes articles
+      </button>
     </div>
   );
 };

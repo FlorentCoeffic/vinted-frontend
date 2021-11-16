@@ -8,6 +8,8 @@ import Offer from "./pages/Offer";
 import Header from "./components/Header";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
+import Publish from "./pages/Publish";
+import Payment from "./pages/Payment";
 
 function App() {
   const [token, setToken] = useState(null);
@@ -34,7 +36,9 @@ function App() {
         <Route path="/" element={<Home searchResult={searchResult} />} />
         <Route path="/signup" element={<SignUp setUser={setUser} />} />
         <Route path="/login" element={<Login setUser={setUser} />} />
+        <Route path="/publish" element={<Publish token={token} />} />
         <Route path="/offer/:id" element={<Offer />} />
+        <Route path="/payment" element={<Payment token={token} />} />
       </Routes>
     </Router>
   );

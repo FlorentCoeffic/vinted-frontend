@@ -1,13 +1,14 @@
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import Hero from "../components/Hero";
+import { useNavigate, Link } from "react-router-dom";
 
 const Offer = () => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   const { id } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -39,20 +40,22 @@ const Offer = () => {
 
       <div className="offerInformation">
         <span className="price"> {data.product_price} €</span>
-
         <ul>
           {data.product_details.map((detail, index) => {
             const keys = Object.keys(detail);
-            console.log("=== >", detail[keys]);
-            return (
-              <li>
-                <span>{keys[0]}</span>
+            // console.log("=== >", detail[keys]);
 
-                <span>{detail[keys[0]]}</span>
+            return (
+              <li className="descriptionDetail">
+                <span className=" detailKey ">{keys[0]}</span>
+
+                <span className=" detail">{detail[keys[0]]}</span>
               </li>
             );
           })}
         </ul>
+
+        <div className="divider"> </div>
 
         <div>
           <p className="productTitle">{data.product_name}</p>
@@ -71,6 +74,16 @@ const Offer = () => {
           )}
           <span>{data.owner.account.username}</span>
         </div>
+        <Link
+          state={{
+            productName: data.product_name,
+            productPrice: data.product_price,
+          }}
+          className="buy-button"
+          to="/payment"
+        >
+          Acheter
+        </Link>
       </div>
     </div>
   );
