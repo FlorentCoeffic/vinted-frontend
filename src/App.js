@@ -17,6 +17,10 @@ function App() {
 
   console.log(searchResult);
 
+  // const baseUrl = "https://florent-vinted-api.herokuapp.com";
+  const baseUrl = "http://localhost:4000";
+  console.log("Baseurl ====>", baseUrl);
+
   const setUser = (token) => {
     if (token) {
       Cookies.set("userToken", token, { expires: 10 });
@@ -33,12 +37,27 @@ function App() {
         setSearchResult={setSearchResult}
       />
       <Routes>
-        <Route path="/" element={<Home searchResult={searchResult} />} />
-        <Route path="/signup" element={<SignUp setUser={setUser} />} />
-        <Route path="/login" element={<Login setUser={setUser} />} />
-        <Route path="/publish" element={<Publish token={token} />} />
-        <Route path="/offer/:id" element={<Offer />} />
-        <Route path="/payment" element={<Payment token={token} />} />
+        <Route
+          path="/"
+          element={<Home searchResult={searchResult} baseUrl={baseUrl} />}
+        />
+        <Route
+          path="/signup"
+          element={<SignUp setUser={setUser} baseUrl={baseUrl} />}
+        />
+        <Route
+          path="/login"
+          element={<Login setUser={setUser} baseUrl={baseUrl} />}
+        />
+        <Route
+          path="/publish"
+          element={<Publish token={token} baseUrl={baseUrl} />}
+        />
+        <Route path="/offer/:id" element={<Offer baseUrl={baseUrl} />} />
+        <Route
+          path="/payment"
+          element={<Payment token={token} baseUrl={baseUrl} />}
+        />
       </Routes>
     </Router>
   );

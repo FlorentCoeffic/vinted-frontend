@@ -3,7 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-const Login = ({ setUser }) => {
+const Login = ({ setUser, baseUrl }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -14,13 +14,10 @@ const Login = ({ setUser }) => {
     event.preventDefault();
 
     try {
-      const response = await axios.post(
-        "https://lereacteur-vinted-api.herokuapp.com/user/login",
-        {
-          email: email,
-          password: password,
-        }
-      );
+      const response = await axios.post(`${baseUrl}/user/login`, {
+        email: email,
+        password: password,
+      });
 
       if (response.data.token) {
         setUser(response.data.token);

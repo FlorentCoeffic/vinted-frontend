@@ -3,7 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-const SignUp = ({ setUser }) => {
+const SignUp = ({ setUser, baseUrl }) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -14,14 +14,11 @@ const SignUp = ({ setUser }) => {
   const handleSubmit = async (event) => {
     try {
       event.preventDefault();
-      const response = await axios.post(
-        "https://lereacteur-vinted-api.herokuapp.com/user/signup",
-        {
-          username: username,
-          email: email,
-          password: password,
-        }
-      );
+      const response = await axios.post(`${baseUrl}/user/signup`, {
+        username: username,
+        email: email,
+        password: password,
+      });
       console.log(response.data);
 
       if (response.data.token) {

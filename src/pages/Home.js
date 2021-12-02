@@ -5,18 +5,16 @@ import Hero from "../components/Hero";
 import { set } from "js-cookie";
 import tear from "../asset/img/tear.svg";
 
-const Home = ({ searchResult }) => {
+const Home = ({ searchResult, baseUrl }) => {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          "https://lereacteur-vinted-api.herokuapp.com/offers"
-        );
+        const response = await axios.get(`${baseUrl}/offers`);
 
-        // console.log(response.data);
+        console.log(response.data);
 
         setData(response.data);
         setIsLoading(false);

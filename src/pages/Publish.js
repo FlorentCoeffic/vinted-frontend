@@ -2,7 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { Navigate, useNavigate } from "react-router-dom";
 
-const Publish = ({ token }) => {
+const Publish = ({ token, baseUrl }) => {
   const [file, setFile] = useState();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -32,15 +32,11 @@ const Publish = ({ token }) => {
       formData.append("city", location);
       formData.append("price", price);
 
-      const response = await axios.post(
-        "https://lereacteur-vinted-api.herokuapp.com/offer/publish",
-        formData,
-        {
-          headers: {
-            authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const response = await axios.post(`${baseUrl}/offer/publish`, formData, {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      });
       if (response.data._id) {
         navigate(`/offer/${response.data._id}`);
       }
