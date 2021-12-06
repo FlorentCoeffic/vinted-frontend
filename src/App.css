@@ -84,6 +84,83 @@
   color: white;
   padding: 5px 20px;
 }
+
+.checkbox .knob {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border: 1px solid #666;
+  border-radius: 100%;
+  position: relative;
+  width: 16px;
+  height: 16px;
+  left: 0;
+  transition: left 100ms ease-in-out 0s;
+  font-weight: bold;
+}
+.checkbox-input > input {
+  display: none;
+}
+.checkbox-design {
+  border-radius: 3px;
+  padding: 2px 11px 2px 11px;
+  margin: 0 15px 0 0;
+  border: 1px solid black;
+}
+.checkbox-design-checked {
+  border-radius: 3px;
+  padding: 3px 6px 3px 6px;
+  margin: 0 15px 0 0;
+  background-color: #0ab1ba;
+}
+.form-button-div {
+  display: flex;
+  justify-content: flex-end;
+}
+.form-validation {
+  background-color: #0ab1ba;
+  color: white;
+  border: none;
+  font: inherit;
+  outline: inherit;
+  border-radius: 4px;
+  padding: 12px 12px;
+  margin: 50px 0;
+}
+.save-offer {
+  background-color: transparent;
+  color: #0ab1ba;
+  border: 1px solid #0ab1ba;
+  font: inherit;
+  outline: inherit;
+  border-radius: 4px;
+  padding: 12px 12px;
+  margin: 50px 15px 50px 0;
+}
+
+/* Checkbox */
+
+.checkbox {
+  margin-right: 25px;
+}
+.checkbox input[name="price"] {
+  display: none;
+}
+
+.checkbox input[type="checkbox"]:checked + .wrapper .knob {
+  left: 24px;
+}
+.checkbox .wrapper {
+  background-color: #2cb1ba;
+  border-radius: 10px;
+  width: 42px;
+  height: 20px;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  outline: none;
+}
 /* ************************************** */
 
 /* ****** HERO******* */
@@ -97,6 +174,11 @@
   background-image: url("./asset/img/hero.jpg");
 }
 
+.hero > div {
+  width: 1280px;
+  margin: auto;
+}
+
 .imgDecoration {
   position: absolute;
   bottom: 0;
@@ -107,7 +189,7 @@
 .encart {
   height: 220px;
   width: 360px;
-  background-color: #fff;
+  background-color: white;
   padding: 25px;
   border-radius: 3px;
   font-size: 34px;
@@ -116,7 +198,19 @@
   justify-content: center;
   position: absolute;
   top: 75px;
-  box-shadow: 0 0 2px rgb(17 17 17 / 24%);
+  box-shadow: 0px 0px 2px rgba(17, 17, 17, 0.24);
+}
+
+.encart button {
+  height: 45px;
+  width: 187px;
+  background-color: #2baeb7;
+  border-radius: 4px;
+  color: white;
+  font-size: 16px;
+  border: none;
+  padding: 0 14px;
+  margin-top: 32px;
 }
 
 .descriptionDetail {

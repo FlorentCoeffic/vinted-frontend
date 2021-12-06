@@ -2,11 +2,12 @@ import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 import axios from "axios";
 import { useState } from "react";
 
-const CheckoutForm = ({ productName, productPrice }) => {
+const CheckoutForm = ({ token, productName, productPrice, baseUrl }) => {
   const stripe = useStripe();
   const elements = useElements();
 
   const [succeed, setSucceed] = useState(false);
+  const [confirmMessage, setConfirmMessage] = useState("");
 
   const price = productPrice;
   const securityFees = price / 10;
@@ -17,22 +18,27 @@ const CheckoutForm = ({ productName, productPrice }) => {
   const handleSubmit = async (event) => {
     try {
       event.preventDefault();
-
       const cardElement = elements.getElement(CardElement);
-
+      console.log(cardElement);
       const stripeResponse = await stripe.createToken(cardElement, {
-        name: "id acheteur",
+        name: "L'id de l'acheteur",
       });
+      console.log("salut");
+
       const stripeToken = stripeResponse.token.id;
-      const response = await axios.post(
-        "https://lereacteur-vinted-api.herokuapp.com/payment",
-        { stripeToken, amount: totalPrice, title: productName }
-      );
+      console.log(stripeToken);
+      const response = await axios.post(`${baseUrl}/payment`, {
+        token: "tok_visa",
+        amount: totalPrice,
+        title: productName,
+      });
       if (response.data.status === "succeeded") {
         setSucceed(true);
+        setConfirmMessage("Paiement valide !");
       }
     } catch (error) {
       console.log(error.message);
+      console.log("555 coucou");
     }
   };
   return (
@@ -72,9 +78,9 @@ const CheckoutForm = ({ productName, productPrice }) => {
             <div className="divider"></div>
             <CardElement />
             <div className="divider"></div>
-            <button className="payButton" type="submit">
-              Pay
-            </button>
+            <input className="payButton" type="submit" value="pay" />
+
+            <span>{confirmMessage}</span>
           </form>
         </div>
       )}

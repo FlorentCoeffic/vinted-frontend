@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import { Navigate, useNavigate } from "react-router-dom";
+import { navigate, useNavigate } from "react-router-dom";
 
 const Publish = ({ token, baseUrl }) => {
   const [file, setFile] = useState();
@@ -146,7 +146,12 @@ const Publish = ({ token, baseUrl }) => {
       </div>
     </div>
   ) : (
-    <Navigate to={"/login"} state={{ fromPublish: true }} />
+    // <Redirect to={{
+    //   pathname:"/login",
+    //   state={fromPublish: true },
+    // }}
+    // />
+    <> </>
   );
 };
 

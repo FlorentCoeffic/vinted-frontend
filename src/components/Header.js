@@ -1,19 +1,26 @@
 import logo from "../asset/img/logo.png";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+// import { Range } from "react-range";
 
-const Header = ({ setUser, token, setSearchResult }) => {
+const Header = ({
+  setUser,
+  token,
+  setSearchResult,
+  baseUrl,
+  setFetchRangeValues,
+  sortPrice,
+  setSortPrice,
+}) => {
   const navigate = useNavigate();
 
   const handleChange = (event) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://lereacteur-vinted-api.herokuapp.com/offers?title=${event.target.value}`
+          `${baseUrl}/offers?title=${event.target.value}`
         );
         setSearchResult(response.data);
-        // setData(response.data);
-        // setIsLoading(false);
       } catch (error) {
         console.log(error.message);
       }
@@ -27,12 +34,27 @@ const Header = ({ setUser, token, setSearchResult }) => {
       <Link to="/">
         <img className="logo" src={logo} alt="logo" />
       </Link>
-
-      <input
-        onChange={handleChange}
-        type="text"
-        placeholder="Recherche des articles"
-      />
+      <div>
+        <input
+          onChange={handleChange}
+          type="text"
+          placeholder="Recherche des articles"
+        />
+        <span style={{ marginRight: 10 }}>Trier par prix : </span>
+        <span className="checkbox">
+          <input type="checkbox" checked={sortPrice} name="price" />
+          <div
+            className="wrapper"
+            onClick={() => {
+              setSortPrice(!sortPrice);
+            }}
+          >
+            <div className="knob">
+              <span>{sortPrice ? "⇣" : "⇡"}</span>
+            </div>
+          </div>
+        </span>
+      </div>
 
       <div className="connexion">
         {token ? (

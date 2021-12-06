@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 const Login = ({ setUser, baseUrl }) => {
@@ -9,6 +9,7 @@ const Login = ({ setUser, baseUrl }) => {
   const [errorMessage, setErrorMessage] = useState("");
 
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -21,6 +22,7 @@ const Login = ({ setUser, baseUrl }) => {
 
       if (response.data.token) {
         setUser(response.data.token);
+        // history.push(location.state.fromPublish ? "/publish" : "/");
         navigate("/");
       }
     } catch (error) {

@@ -1,30 +1,34 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
-import Hero from "../components/Hero";
+import { useNavigate, Link } from "react-router-dom";
 import { set } from "js-cookie";
 import tear from "../asset/img/tear.svg";
 
 const Home = ({ searchResult, baseUrl }) => {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  const [page, setPage] = useState(1);
+  const [numPage, setNumPage] = useState(0);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`${baseUrl}/offers`);
+        const response = await axios.get(`${baseUrl}/offers?page=${page}`);
 
-        console.log(response.data);
-
+        console.log(response.data.count);
+        setNumPage(
+          Array.from(Array(Math.ceil(response.data.count / 15)).keys())
+        );
         setData(response.data);
         setIsLoading(false);
       } catch (error) {
         console.log(error.message);
       }
     };
-
     fetchData();
-  }, []);
+  }, [page]);
 
   useEffect(() => {
     setData(searchResult);
@@ -36,8 +40,20 @@ const Home = ({ searchResult, baseUrl }) => {
     <div>
       <div className="hero">
         <img src={tear} alt="tear" className="imgDecoration" />
+        <div>
+          <div className="encart">
+            <p>Prêts à faire du tri dans vos placards ?</p>
+            <button
+              onClick={() => {
+                navigate("/publish");
+              }}
+            >
+              Commencer à vendre
+            </button>
+          </div>
+        </div>
       </div>
-      {/* <Hero /> */}
+
       <div className="offers">
         {data.offers.map((offer, index) => {
           return (
@@ -69,6 +85,20 @@ const Home = ({ searchResult, baseUrl }) => {
                 })}
               </div>
             </Link>
+          );
+        })}
+      </div>
+
+      <div className="pagination">
+        {numPage.map((page) => {
+          return (
+            <button
+              onClick={() => {
+                setPage(page + 1);
+              }}
+            >
+              {page + 1}
+            </button>
           );
         })}
       </div>
